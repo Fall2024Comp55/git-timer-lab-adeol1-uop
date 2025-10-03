@@ -34,12 +34,20 @@ public class BallLauncher extends GraphicsProgram{
 		t.start();
 	}
 	
-	public void mousePressed(MouseEvent e) {
-		GOval ball = makeBall(SIZE/2, e.getY());
-		add(ball);
-		//balls.add(ball);
-	}
+	 public void mousePressed(MouseEvent e) {
+	        for (GOval temp : balls) {
+	        	System.out.println(temp.getX());
+	            if (temp.getX() < 100) {
+	                return;
+	            }
+	        }
+	        
+	        GOval ball = makeBall(SIZE / 2, e.getY());
+	        add(ball);
+        	System.out.println("ball added");
+	    }
 	
+
 	public GOval makeBall(double x, double y) {
 		GOval temp = new GOval(x-SIZE/2, y-SIZE/2, SIZE, SIZE);
 		temp.setColor(Color.RED);
